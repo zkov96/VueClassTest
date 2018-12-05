@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './components/App/App.vue'
-import * as vm from "vm";
 
 class AppCore {
     private instance!: Vue;

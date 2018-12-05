@@ -77,20 +77,30 @@ module.exports = {
                 }
             },
             {
-              test: /\.(ts|tsx|d.ts)?$/,
-              use: [
-                {
-                  loader: 'babel-loader'
-                },
-                {
-                  loader: 'ts-loader',
-                  options: {
-                    appendTsSuffixTo: [/\.ts\.vue$/],
-                    appendTsxSuffixTo: [/\.tsx\.vue$/]
-                  }
-                }
-              ],
-              exclude: /node_modules/
+                test: /\.(ts|tsx|d.ts)?$/,
+                use: [
+                    {
+                        loader: 'babel-loader'
+                    },
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            appendTsSuffixTo: [/\.ts\.vue$/],
+                            appendTsxSuffixTo: [/\.tsx\.vue$/],
+                        }
+                    },
+                    {
+                        loader: 'inspect-loader',
+                        options: {
+                            callback (inspect) {
+                                console.log(inspect.arguments)
+                                console.log(inspect.context)
+                                console.log(inspect.options)
+                            }
+                        }
+                    },
+                ],
+                exclude: /node_modules/
             },
         ]
     },
