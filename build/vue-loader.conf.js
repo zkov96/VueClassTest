@@ -7,42 +7,8 @@ const sourceMapEnabled = isProduction
     : config.dev.cssSourceMap
 
 const loaders = {
-    ts: [
-        {
-            loader: 'babel-loader'
-        },
-        {
-            loader: 'ts-loader'
-        },
-        {
-            loader: 'inspect-loader',
-            options: {
-                callback (inspect) {
-                    console.log(inspect.arguments)
-                    console.log(inspect.context)
-                    console.log(inspect.options)
-                }
-            }
-        },
-    ],
-    tsx: [
-        {
-            loader: 'babel-loader'
-        },
-        {
-            loader: 'ts-loader'
-        },
-        {
-            loader: 'inspect-loader',
-            options: {
-                callback (inspect) {
-                    console.log(inspect.arguments)
-                    console.log(inspect.context)
-                    console.log(inspect.options)
-                }
-            }
-        },
-    ],
+    ts: ['babel-loader', 'chain-loader-tester', 'ts-loader'],
+    tsx: ['babel-loader', 'chain-loader-tester', 'ts-loader'],
 }
 
 module.exports = {

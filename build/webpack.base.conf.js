@@ -90,14 +90,7 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'inspect-loader',
-                        options: {
-                            callback (inspect) {
-                                console.log(inspect.arguments)
-                                console.log(inspect.context)
-                                console.log(inspect.options)
-                            }
-                        }
+                        loader: 'chain-loader-tester',
                     },
                 ],
                 exclude: /node_modules/
