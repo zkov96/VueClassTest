@@ -7,8 +7,8 @@ const sourceMapEnabled = isProduction
     : config.dev.cssSourceMap
 
 const loaders = {
-    ts: ['babel-loader', 'chain-loader-tester', 'ts-loader'],
-    tsx: ['babel-loader', 'chain-loader-tester', 'ts-loader'],
+    ts: ['babel-loader', 'awesome-typescript-loader', 'chain-loader-tester'],
+    tsx: ['babel-loader', 'awesome-typescript-loader', 'chain-loader-tester'],
 }
 
 module.exports = {

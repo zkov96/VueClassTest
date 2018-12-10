@@ -33,7 +33,7 @@ module.exports = {
             : config.dev.assetsPublicPath
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json', '.tsx', '.ts'],
+        extensions: ['.js', '.jsx', '.vue', '.json', '.tsx', '.ts'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
@@ -83,14 +83,10 @@ module.exports = {
                         loader: 'babel-loader'
                     },
                     {
-                        loader: 'ts-loader',
-                        options: {
-                            appendTsSuffixTo: [/\.ts\.vue$/],
-                            appendTsxSuffixTo: [/\.tsx\.vue$/],
-                        }
+                        loader: 'awesome-typescript-loader'
                     },
                     {
-                        loader: 'chain-loader-tester',
+                        loader: 'chain-loader-tester'
                     },
                 ],
                 exclude: /node_modules/
