@@ -1,5 +1,6 @@
 'use strict'
 const utils = require('./utils')
+const path = require('path')
 const config = require('../config')
 const isProduction = process.env.NODE_ENV === 'production'
 const sourceMapEnabled = isProduction
@@ -7,8 +8,11 @@ const sourceMapEnabled = isProduction
     : config.dev.cssSourceMap
 
 const loaders = {
-    ts: ['babel-loader', 'awesome-typescript-loader', 'chain-loader-tester'],
-    tsx: ['babel-loader', 'awesome-typescript-loader', 'chain-loader-tester'],
+    kt: [
+        {
+            loader: 'chain-loader-tester',
+        },
+    ],
 }
 
 module.exports = {

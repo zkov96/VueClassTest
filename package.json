@@ -14,13 +14,14 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "kotlin": "^1.3.11",
+    "loader-utils": "latest",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
-    "loader-utils": "latest"
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@jetbrains/kotlin-webpack-plugin": "^2.0.3",
     "autoprefixer": "^9.3.1",
-    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.24.0",
     "babel-eslint": "^10.0.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -52,7 +53,6 @@
     "file-loader": "^2.0.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^3.2.0",
-    "inspect-loader": "^1.0.0",
     "jest": "^23.6.0",
     "jest-serializer-vue": "^2.0.2",
     "nightwatch": "^1.0.14",
@@ -68,8 +68,6 @@
     "semver": "^5.3.0",
     "shelljs": "^0.8.3",
     "style-loader": "^0.23.1",
-    "ts-loader": "^5.3.1",
-    "typescript": "^3.2.1",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^1.1.2",
     "vue": "^2.3.3",

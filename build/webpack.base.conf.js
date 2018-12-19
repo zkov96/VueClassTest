@@ -22,8 +22,8 @@ const createLintingRule = () => ({
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
-        // app: './src/_main.js'
-        app: './src/main.ts'
+        app: './src/main.js'
+        // app: './src/main.ts'
     },
     output: {
         path: config.build.assetsRoot,
@@ -33,11 +33,12 @@ module.exports = {
             : config.dev.assetsPublicPath
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.vue', '.json', '.tsx', '.ts'],
+        extensions: ['.js', '.jsx', '.vue', '.json', ],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
-        }
+        },
+        modules: ['kotlin_build', 'node_modules'],
     },
     module: {
         rules: [
@@ -47,10 +48,20 @@ module.exports = {
                 loader: 'vue-loader',
                 options: vueLoaderConfig
             },
+            // {
+            //     test: /\.js$/,
+            //     loader: 'babel-loader',
+            //     include: [resolve('kotlin_build'), resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+            // },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+                // loader: 'babel-loader',
+                include: [path.resolve('../kotlin_build')],
+                exclude: [
+                    /kotlin\.js$/, // Kotlin runtime doesn't have sourcemaps at the moment
+                ],
+                use: ['babel-loader'],
+                enforce: 'pre',
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -76,21 +87,16 @@ module.exports = {
                     name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
             },
-            {
-                test: /\.(ts|tsx|d.ts)?$/,
-                use: [
-                    {
-                        loader: 'babel-loader'
-                    },
-                    {
-                        loader: 'awesome-typescript-loader'
-                    },
-                    {
-                        loader: 'chain-loader-tester'
-                    },
-                ],
-                exclude: /node_modules/
-            },
+            // {
+            //     test: /\.kt$/,
+            //     use:
+            //         [
+            //             {
+            //                 loader: 'chain-loader-tester'
+            //             },
+            //         ],
+            //     exclude: /node_modules/
+            // },
         ]
     },
     node: {
